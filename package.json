@@ -6,13 +6,18 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.15.2",
+    "body-parser": "^1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
+<<<<<<< HEAD
     "facebook-search": "^0.1.1",
+=======
+    "mongodb": "^2.2.22",
+>>>>>>> d740053cbd74eecf101ff2a2cb4c19940972f4b1
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "twit": "^2.2.5"
   }
 }
