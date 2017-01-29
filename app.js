@@ -14,6 +14,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
 
 //body parser
 //app.use(express.bodyParser());
