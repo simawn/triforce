@@ -2,23 +2,23 @@ var FacebookSearch = require('facebook-search');
 
 var fb = new FacebookSearch('1043308529114270', '3f7b56707c2cccb424bb5e12e4f66488');
 
-
-
 var obj;
 
-function searchFB(context, callback) {
+function searchFace(context, callback) {
 
     var searchPage = {
         type: 'page',
         q: context
     };
+
     fb.search(searchPage, function (err, res) {
         //console.log(err ? err : res)
         obj = res;
+
         for (i = 0; i < obj.length; i++) {
-            obj[i].id = "https://www.facebook.com/pages/"
-                + res[i].name + "/" + res[i].id;
+            obj[i].id = "https://www.facebook.com/pages/" + res[i].name + "/" + res[i].id;
         }
+
         console.log(obj);
 
         callback(obj);
@@ -37,4 +37,4 @@ function searchFB(context, callback) {
     });
 }
 
-module.exports.searchFB = searchFB;
+module.exports.searchFace = searchFace;

@@ -4,7 +4,7 @@
 
 var ig = require('instagram-tagscrape');
 
-function instaSearch(hashtag, callback) {
+function searchInsta(hashtag, callback) {
 
     var initialArray = [];
     var finalArray = [];
@@ -12,7 +12,6 @@ function instaSearch(hashtag, callback) {
     ig.scrapeTagPage(hashtag).then(function (result) {
 
         // console.dir(result);
-
 
         result.media.forEach(function (item) {
 
@@ -36,4 +35,4 @@ function instaSearch(hashtag, callback) {
         });
 }
 
-module.exports.instaSearch = instaSearch;
+module.exports.searchInsta = searchInsta;
