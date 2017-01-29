@@ -21,11 +21,16 @@
 <div class="card col-sm-3" style="width: 20rem; border:none; margin-bottom:35px">
     <% if(twitter[i].media_link != 'null'){%>
     <div class="text-center">
-    <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= twitter[i].media_link %>" alt="Card image cap">
+    <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= twitter[i].media_link %>" alt="Card image cap"><br>
     </div>
-    <% }%>
+    <% } else {%>
+    <div class="text-center">
+        <img class="card-img-top img-thumbnails" style="opacity: .63" height="250px" width="250px" src="/images/twitter.jpg" alt="Card image cap"> <br>
+    </div>
+
+    <%}%>
     <div class="card-block" style=" padding: 0;">
-        <p class="card-text" "><%= twitter[i].text %><br>
+        <p class="card-text" style="margin-top:7px"><%= twitter[i].text %><br>
             <span class="card-title" style="font-weight: bold;">via twitter</span><br>
 </p>
 
@@ -40,15 +45,26 @@
             }
             else if(twitter[i+1].media_link != 'null'){ %>
         <div class="text-center">
-            <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= twitter[i+1].media_link %>" alt="Card image cap">
+            <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= twitter[i+1].media_link %>" alt="Card image cap"><br>
         </div>
-
         <div class="card-block" style="padding: 0;">
-            <p class="card-text"><%= twitter[i+1].text %><br>
+            <p class="card-text" style="margin-top:7px"><%= twitter[i+1].text %><br>
                 <span class="card-title" style="font-weight: bold;">via twitter</span><br></p>
             <a href="<%= twitter[i+1].link %>" class="btn btn-primary" style="padding-top: 3px;padding-bottom: 3px;width: 100%;">Direct Link</a>
         </div>
-        <% }%>
+
+        <% } else {%>
+
+        <div class="text-center">
+            <img class="card-img-top img-thumbnails" style="opacity: .63" height="250px" width="250px"  src="/images/twitter.jpg" alt="Card image cap"> <br>
+        </div>
+        <div class="card-block" style="padding: 0;">
+            <p class="card-text" style="margin-top:7px"><%= twitter[i+1].text %><br>
+                <span class="card-title" style="font-weight: bold;">via twitter</span><br></p>
+            <a href="<%= twitter[i+1].link %>" class="btn btn-primary" style="padding-top: 3px;padding-bottom: 3px;width: 100%;">Direct Link</a>
+        </div>
+        <%}%>
+
     </div>
 <% } %>
     </div>
@@ -62,12 +78,12 @@
         <div class="card col-sm-3" style="width: 20rem; border:none">
             <% if(insta[i].preview != 'null'){%>
             <div class="text-center">
-                <img class="card-img-top img-thumbnails" height="200px" width="200px" src="<%= insta[i].preview %>" alt="Card image cap">
+                <img class="card-img-top img-thumbnails"  height="250px" width="250px" src="<%= insta[i].preview %>" alt="Card image cap">
             </div>
             <% }%>
-            <div class="card-block">
+            <div class="card-block" style="padding:0px">
                 <!--<h4 class="card-title">Card title</h4>-->
-                <p class="card-text"><%= insta[i].caption %></p>
+                <p class="card-text" style="margin:10px 0px"><%= insta[i].caption %></p>
             </div>
         </div>
         <div class="card col-sm-3" style="width: 20rem; border:none">
@@ -77,12 +93,12 @@
             }
             else if(insta[i+1].preview != 'null'){ %>
             <div class="text-center">
-                <img class="card-img-top img-thumbnails" height="200px" width="200px" src="<%= insta[i+1].preview %>" alt="Card image cap">
+                <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= insta[i+1].preview %>" alt="Card image cap">
             </div>
 
-            <div class="card-block">
+            <div class="card-block" style="padding:0px" >
 
-                <p class="card-text"><%= insta[i+1].caption %></p>
+                <p class="card-text" style="margin:10px 0px"><%= insta[i+1].caption %></p>
 
             </div>
             <% }%>
@@ -94,13 +110,25 @@
 <!--facebook-->
 <div class="container">
     <div class="row">
-        <% for(var i=0; i < facebook.length; i=i+2) { %>
+
+
+
+        <%
+        var limit = 10;
+        if(facebook.length < 10){
+            limit = facebook.length;
+        }
+        for(var i=0; i < limit; i=i+2) { %>
         <div class="card col-sm-3" style="width: 20rem; border:none">
 
-            <div class="card-block">
-                <h4 class="card-title"><%= facebook[i].name%></h4>
-                <a href="<%= facebook[i].id %>" class="btn btn-primary">Link</a>
+            <div class="card-block" style="padding: 0px; text-align: center; margin-bottom:50px">
+                <img class="card-img-top img-thumbnails" style="opacity: .63" height="250px" width="250px"  src="/images/facebook.png" alt="Card image cap"> <br>
+                <h4 class="card-title"><br><%= facebook[i].name%></h4>
+                <a href="<%= facebook[i].id %>" class="btn btn-primary" style="padding-top: 3px;padding-bottom: 3px;width: 100%;">Direct Link</a>
             </div>
+
+
+
         </div>
         <div class="card col-sm-3" style="width: 20rem; border:none">
             <%
@@ -110,9 +138,10 @@
             else%>
 
 
-            <div class="card-block">
-                <h4 class="card-title"><%= facebook[i+1].name%></h4>
-                <a href="<%= facebook[i+1].id %>" class="btn btn-primary">Link</a>
+            <div class="card-block" style="padding:0px; text-align: center; margin-bottom:50px">
+                <img class="card-img-top img-thumbnails" style="opacity: .63" height="250px" width="250px"  src="/images/facebook.png" alt="Card image cap"> <br>
+                <h4 class="card-title"><br><%= facebook[i+1].name%></h4>
+                <a href="<%= facebook[i+1].id %>" class="btn btn-primary" style="padding-top: 3px;padding-bottom: 3px;width: 100%;">Direct Link</a>
             </div>
 
         </div>
