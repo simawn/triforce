@@ -16,7 +16,12 @@ function searchFace(context, callback) {
         obj = res;
 
         for (i = 0; i < obj.length; i++) {
-            obj[i].id = "https://www.facebook.com/pages/" + res[i].name + "/" + res[i].id;
+
+            var pageName = res[i].name;
+
+            obj[i].id = "https://www.facebook.com/pages/" + pageName.replace(/\s/g,'-') + "/" + res[i].id;
+
+            res[i].platform = 'fb';
         }
 
         console.log(obj);

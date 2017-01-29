@@ -1,0 +1,38 @@
+<h1>Results:</h1>
+<p>id: <%= output %></p>
+
+<table>
+    <% for(var i=0; i < twitter.length; i++) { %>
+    <tr>
+        <% if(twitter[i].media_link != 'null'){%>
+        <td><img alt="img" height="100px" src="<%= twitter[i].media_link %>"/></td>
+        <% } %>
+        <td><%= twitter[i].text %></td>
+        <td><a href="<%= twitter[i].link %>"><%= twitter[i].link %></a></td>
+        <td><%= twitter[i].platform %></td>
+    </tr>
+    <% } %>
+</table>
+<table>
+    <% for(var i=0; i < insta.length; i++) { %>
+    <tr>
+        <td><img alt="img" height="200px" src="<%= insta[i].preview %>"/></td>
+        <td><%= insta[i].caption %></td>
+        <td><%= insta[i].platform %></td>
+    </tr>
+    <% } %>
+</table>
+<table>
+    <% for(var i=0; i < facebook.length; i++) { %>
+    <tr>
+        <td><%= facebook[i].name%></td>
+        <td><a href="<%= facebook[i].id %>"><%= facebook[i].id %></a></td>
+    </tr>
+    <% } %>
+</table>
+
+<%
+    console.log(twitter.length);
+ console.log(insta.length);
+ console.log(facebook.length);
+ %>

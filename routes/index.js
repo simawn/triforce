@@ -7,18 +7,20 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/test/:id', function(req, res, next){
-  masterSearch.showResult(req.params.id, function(results){
-      res.render('test', {output: req.params.id,
-        thisresult: results
+router.get('/search/:id', function(req, res, next){
+  masterSearch.showResult(req.params.id, function(ig,tw,fb){
+      res.render('search', {output: req.params.id,
+        insta: ig,
+          twitter: tw,
+          facebook: fb
       });
 
   });
 });
 
-router.post('/test/submit', function(req, res, next){
+router.post('/search/submit', function(req, res, next){
   var id = req.body.id;
-  res.redirect('/test/' + id);
+  res.redirect('/search/' + id);
 });
 
 module.exports = router;
