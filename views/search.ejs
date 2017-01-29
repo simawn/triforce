@@ -1,38 +1,136 @@
-<h1>Results:</h1>
-<p>id: <%= output %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<table>
-    <% for(var i=0; i < twitter.length; i++) { %>
-    <tr>
-        <% if(twitter[i].media_link != 'null'){%>
-        <td><img alt="img" height="100px" src="<%= twitter[i].media_link %>"/></td>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+
+        <h1 style="margin:20px;"><%= output %> </h1>
+
+
+<!--twitter-->
+    <div class="row">
+<% for(var i=0; i < twitter.length; i=i+2) { %>
+<div class="card col-sm-3" style="width: 20rem; border:none; margin-bottom:35px">
+    <% if(twitter[i].media_link != 'null'){%>
+    <div class="text-center">
+    <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= twitter[i].media_link %>" alt="Card image cap">
+    </div>
+    <% }%>
+    <div class="card-block" style=" padding: 0;">
+        <p class="card-text" "><%= twitter[i].text %><br>
+            <span class="card-title" style="font-weight: bold;">via twitter</span><br>
+</p>
+
+        <a href="<%= twitter[i].link %>" class="btn btn-primary" style="padding-top: 3px;padding-bottom: 3px;width: 100%;">Direct Link</a>
+
+    </div>
+</div>
+    <div class="card col-sm-3" style="width: 20rem; border:none; margin-bottom:35px">
+        <%
+            if(twitter[i+1] == null) {
+                console.log("sleeplis");
+            }
+            else if(twitter[i+1].media_link != 'null'){ %>
+        <div class="text-center">
+            <img class="card-img-top img-thumbnails" height="250px" width="250px" src="<%= twitter[i+1].media_link %>" alt="Card image cap">
+        </div>
+
+        <div class="card-block" style="padding: 0;">
+            <p class="card-text"><%= twitter[i+1].text %><br>
+                <span class="card-title" style="font-weight: bold;">via twitter</span><br></p>
+            <a href="<%= twitter[i+1].link %>" class="btn btn-primary" style="padding-top: 3px;padding-bottom: 3px;width: 100%;">Direct Link</a>
+        </div>
+        <% }%>
+    </div>
+<% } %>
+    </div>
+</div>
+
+<br><br>
+<!--instagram-->
+<div class="container">
+    <div class="row">
+        <% for(var i=0; i < insta.length; i=i+2) { %>
+        <div class="card col-sm-3" style="width: 20rem; border:none">
+            <% if(insta[i].preview != 'null'){%>
+            <div class="text-center">
+                <img class="card-img-top img-thumbnails" height="200px" width="200px" src="<%= insta[i].preview %>" alt="Card image cap">
+            </div>
+            <% }%>
+            <div class="card-block">
+                <!--<h4 class="card-title">Card title</h4>-->
+                <p class="card-text"><%= insta[i].caption %></p>
+            </div>
+        </div>
+        <div class="card col-sm-3" style="width: 20rem; border:none">
+            <%
+            if(insta[i+1] == null) {
+                console.log("sleeplis");
+            }
+            else if(insta[i+1].preview != 'null'){ %>
+            <div class="text-center">
+                <img class="card-img-top img-thumbnails" height="200px" width="200px" src="<%= insta[i+1].preview %>" alt="Card image cap">
+            </div>
+
+            <div class="card-block">
+
+                <p class="card-text"><%= insta[i+1].caption %></p>
+
+            </div>
+            <% }%>
+        </div>
         <% } %>
-        <td><%= twitter[i].text %></td>
-        <td><a href="<%= twitter[i].link %>"><%= twitter[i].link %></a></td>
-        <td><%= twitter[i].platform %></td>
-    </tr>
-    <% } %>
-</table>
-<table>
-    <% for(var i=0; i < insta.length; i++) { %>
-    <tr>
-        <td><img alt="img" height="200px" src="<%= insta[i].preview %>"/></td>
-        <td><%= insta[i].caption %></td>
-        <td><%= insta[i].platform %></td>
-    </tr>
-    <% } %>
-</table>
-<table>
-    <% for(var i=0; i < facebook.length; i++) { %>
-    <tr>
-        <td><%= facebook[i].name%></td>
-        <td><a href="<%= facebook[i].id %>"><%= facebook[i].id %></a></td>
-    </tr>
-    <% } %>
-</table>
+    </div>
+</div>
+<br><br>
+<!--facebook-->
+<div class="container">
+    <div class="row">
+        <% for(var i=0; i < facebook.length; i=i+2) { %>
+        <div class="card col-sm-3" style="width: 20rem; border:none">
+
+            <div class="card-block">
+                <h4 class="card-title"><%= facebook[i].name%></h4>
+                <a href="<%= facebook[i].id %>" class="btn btn-primary">Link</a>
+            </div>
+        </div>
+        <div class="card col-sm-3" style="width: 20rem; border:none">
+            <%
+            if(facebook[i+1] == null) {
+                console.log("sleeplis");
+            }
+            else%>
+
+
+            <div class="card-block">
+                <h4 class="card-title"><%= facebook[i+1].name%></h4>
+                <a href="<%= facebook[i+1].id %>" class="btn btn-primary">Link</a>
+            </div>
+
+        </div>
+        <% } %>
+    </div>
+</div>
+
+
 
 <%
     console.log(twitter.length);
  console.log(insta.length);
  console.log(facebook.length);
  %>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>
