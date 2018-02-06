@@ -1,6 +1,6 @@
 var FacebookSearch = require('facebook-search');
 
-var fb = new FacebookSearch('1043308529114270', '3f7b56707c2cccb424bb5e12e4f66488');
+var fb = new FacebookSearch('', '');
 
 var obj;
 
